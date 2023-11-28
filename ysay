@@ -1,0 +1,37 @@
+#!/bin/bash
+
+  # ysay (2023) - Markierten Text mit Sprachsynthese (piper) per Tastenkombination als Audiostream ausgeben.
+  # https://github.com/thefoster/ysay-hotkey
+  # Dies ist das Ergebnis einer Kombination aus dem Script xsay (von Alex https://www.youtube.com/watch?v=UjBtKRd7c34) und dem Vorgehen zur Sprachausgabe mit piper von Thorsten-Voice (https://www.thorsten-voice.de/kostenloses-deutsches-text-to-speech-tts
+
+  # Auf dem Desktop markierten Text in Variable $text setzen
+  text="$(xsel -o)";
+
+  # Ein paar von xsay übernommene Ersetzungen
+  # Doppelpunkt aussprechen
+  text=`echo $text | sed -e "s/:/ Doppelpunkt /g"`;
+  # Doppelslash aussprechen
+  text=`echo $text | sed 's,//, Doppelslash.,g'`;
+  # Slash aussprechen
+  text=`echo $text | sed 's,/, Slash ,g'`;
+  # Minus aussprechen
+  text=`echo $text | sed 's,-, Minus ,g'`;
+  # & Zeichen Aussprechen
+  text=`echo $text | sed 's,&, und ,g'`;
+  # " Zeichen Aussprechen
+  text=`echo $text | sed 's,", Anführungszeichen ,g'`;
+  # # Zeichen Aussprechen
+  text=`echo $text | sed 's,#, Häshtäg ,g'`;
+  # z.B. Zum Beispiel aussprechen
+  text=`echo $text | sed 's,.z.B., zum Beispiel ,g'`;
+  # etc Zum Beispiel aussprechen
+  text=`echo $text | sed 's,etc, etzetera ,g'`;
+
+  # ProzessID der Audiowiedergabe ermitteln und in Datei schreiben (für xsaykill)
+  echo $PID >/tmp/ysay-avplay.PID
+
+  # Auswahlbeispiele deutscher Stimmen
+echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-kerstin-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
+#echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-ramona-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
+#echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-eva_k-x_low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
+#echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-thorsten-high.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw

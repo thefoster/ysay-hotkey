@@ -1,0 +1,8 @@
+#!/bin/bash
+  # https://github.com/thefoster/ysay-hotkey
+  # Audiowiedergabe des ausgewählten Textes vorzeitig abbrechen
+  # Datei: ~/bin/kill-ysay
+
+  PID="$(cat /tmp/ysay-avplay.pid)";
+  kill $PID;
+  rm /tmp/ysay-avplay.pid;
