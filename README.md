@@ -1,39 +1,40 @@
 # ysay-hotkey
-<b>ysay (2023) - Markierten Text mit Sprachsynthese (piper) auf deutsch per Tastenkombination als Audiostream ausgeben (vorlesen).</b>
+<b>ysay (2023) - Output (read aloud) selected text with speech synthesis (piper) (in German) as an audio stream using a key combination.</b>
 
-*Inspiriert von:*</b>
-*   der Verwendung von xsel aus dem Script xsay von Alex (https://www.youtube.com/watch?v=UjBtKRd7c34)
-*   dem Vorgehen zur Sprachausgabe mit piper von Thorsten-Voice (https://www.thorsten-voice.de/kostenloses-deutsches-text-to-speech-tts
+*<b>Inspired by:*</b>
+*   the use of xsel from the script xsay by Alex (https://www.youtube.com/watch?v=UjBtKRd7c34)
+*   the procedure for voice output with piper from Thorsten-Voice (https://www.thorsten-voice.de/kostenloses-deutsches-text-to-speech-tts)
 
-<b>Benötigt:</b>
+<b>Requirements:</b>
 
 * piper: https://github.com/rhasspy/piper/releases
 * espeak,xsel:  <code>sudo apt-get install espeak-ng xsel</code>
-* Sprachdateien: https://huggingface.co/rhasspy/piper-voices/tree/main/de/de_DE (.onnx und onnx.json der jeweiligen Stimme)
+* speech files: https://huggingface.co/rhasspy/piper-voices/tree/main/de/de_DE (.onnx und onnx.json of the corresponding voice)
 
 <b>Installation:</b>
 
-* Das Verzeichnis des entpackten piper-Pakets nach \~bin/ kopieren und die Sprachdateien in das piper-Verzeichnis (~/bin/piper/) legen
-* ysay und ysaykill nach ~bin/ kopieren
-* In den Systemeinstellungen nun noch die Tastenkombinationen zuweisen, ich habe mich für Win+S entschieden
-  *   Super/Meta+S  markierten Text ausgeben  (~/bin/ysay)
-  *   Super/Meta+Shift+S  Audioausgabe abbrechen  (~/bin/ysaykill)
+* copy the directory of the unpacked piper package to \~bin/ and place the language files in the piper directory (~/bin/piper/)
+* copy ysay and ysaykill to ~bin/ 
+* now assign the key combinations in the system settings, i have decided on Win+S
+  *   Super/Meta+S  output marked text  (~/bin/ysay)
+  *   Super/Meta+Shift+S cancel current audio output  (~/bin/ysaykill)
 
-Die Skripte, Sprachdateien und piper können natürlich auch in beliebige andere Pfade kopiert werden, z.B. unter /usr/local/, dann müssen die Pfadangaben in den Skripten angepasst werden.
+The scripts, language files and piper can of course also be copied to any other path, e.g. under /usr/local/, in which case the path details in the scripts must be adapted.
 
-Getestet mit Kubuntu 22.04 und 23.10 (sollte mit jeder Distro funktionieren) mit vier deutschen Sprachmodellen (viele weitere verfügbar).
+Tested with Kubuntu 22.04LTS and 23.10 (should work with any distro) with four German (many more available) language models.
+Should work on all other dislay managers (though ot tested) other than KDE.
 
-<b>Geschichte:</b>
-<br> In den letzten Jahren hatte ich immer mal wieder versucht, unter Linux eine passable Sprachausgabe einzurichten und habe praktisch alles durch an Kombinationen von espeak/mbrola/speechd/flite/ivona/festival/festvox/jovie/gespeaker/ktts/orca/etc.
-<br> Nichts davon hatte bisher hinsichtlich Benutzbarkeit und Ausgabequalität wirklich (gut) funktioniert, insbesondere nicht auf deutsch.
-<br> Gerade im Vergleich zu Android, wo es seit Jahren sehr gute Sprachausgabe auch ohne Google/Cloud gibt, finde ich die Situation auf dem Linux-Desktop armselig, auch unter KDE klingen die Sprachen über speechd schlecht. 
-<br> Kurze Zeit hatte ich xsay verwendet, aber wegen der mageren Klangqualität der Pico-Sprache eher selten. 
+<b>History:</b>
+<br> Over the last few years, i've tried to set up a reasonable voice output under Linux from time to time and have tried practically everything with combinations of espeak/mbrola/speechd/flite/ivona/festival/festvox/jovie/gespeaker/ktts/orca/etc...
+<br> None of these had really worked (well) in terms of usability and output quality, especially not in German.
+<br> Especially in comparison to Android, where there has been very good speech output for years even without Google/Cloud, I find the situation on the Linux desktop pathetic, even under KDE the languages sound bad via speechd. 
+<br> I used xsay for a short time, but rarely because of the poor sound quality of the Pico voice. 
 
-<b>Warum dann ein weiteres Skript?</b>
-<br> Dieses funktioniert ;-), hat eine bessere Audioqualität und kommt ohne temporäre wav-oder mp3-Datei aus.
-<br> Beim aktuellen spontanen Versuch bin ich dann (eher zufällig) auf piper gestoßen und war erstaunt, wie schnell und unkompliziert das ging.
-<br> Die Sprachqualität ist mit allen (von mir getesteten) Stimmen viel besser als bei Pico und für mich ausreichend gut, um auch längere Texte vorlesen zu lassen.
+<b>Why another script then?</b>
+<br> This one works ;-), has a better audio quality and omits the need for temporary wav- or mp3-files
+<br> During my latest spontaneous attempt, I came across piper (rather by chance) and was amazed at how quick and easy it was.
+<br> The voice quality with all the voices (that I tested) is much better than with Pico and is good enough for me to have longer texts read aloud.
 
-<b>Fehler/Verbesserungen</b>
-<br> Ich habe es auf zwei Rechnern getestet, es war für mich ein erfolgreicher Schnellschuss und ich habe nicht vor, daraus ein größeres Entwicklungsprojekt zu machen.
-<br>Bei Fehlern oder Verbesserungsvorschlägen könnt ihr mich aber gerne kontaktieren.
+<b>Errors/improvements</b>
+<br> I tested it on two computers, it was a successful quick fix for me and I have no plans to turn it into a larger development project.
+<br>If you have any errors or suggestions for improvement, please feel free to contact me.
