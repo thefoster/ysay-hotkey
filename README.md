@@ -21,8 +21,8 @@
 
 The scripts, language files and piper can of course also be copied to any other path, e.g. under /usr/local/, in which case the path details in the scripts must be adapted.
 
-Tested with Kubuntu 22.04LTS and 23.10 (should work with any distro) with four German (many more available) language models.
-Should work on all other dislay managers (though ot tested) other than KDE.
+Tested with Kubuntu 22.04 LTS, 23.10 and 24.04 LTS (should work with any distro) with four German (many more available) language models.
+Should work on all other display managers (though ot tested) other than KDE.
 
 <b>History:</b>
 <br> Over the last few years, i've tried to set up a reasonable voice output under Linux from time to time and have tried practically everything with combinations of espeak/mbrola/speechd/flite/ivona/festival/festvox/jovie/gespeaker/ktts/orca/etc...
