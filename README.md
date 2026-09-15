@@ -8,7 +8,7 @@
 <b>Requirements:</b>
 
 * piper: https://github.com/rhasspy/piper/releases
-* espeak,xsel:  <code>sudo apt-get install espeak-ng xsel wl-clipboard</code>
+* espeak,xsel:  <code>sudo apt-get install alsa-utils espeak-ng xsel wl-clipboard</code>
 * speech files: https://huggingface.co/rhasspy/piper-voices/tree/main/de/de_DE (.onnx und onnx.json of the corresponding voice)
 
 <b>Installation:</b>
