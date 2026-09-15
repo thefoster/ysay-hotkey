@@ -36,10 +36,11 @@
   text=`echo $text | sed 's,etc, etzetera ,g'`;
 
   # ProzessID der Audiowiedergabe ermitteln und in Datei schreiben (für xsaykill)
-  echo $PID >/tmp/ysay-avplay.pid
+  # echo $PID >/tmp/ysay-avplay.pid
+  # PID in Ausgabe von Piper verschoben
 
   # Auswahlbeispiele deutscher Stimmen
-echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-kerstin-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
+echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-kerstin-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw & echo $! >/tmp/ysay-avplay.pid
 #echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-ramona-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
 #echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-eva_k-x_low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
 #echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-thorsten-high.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw
