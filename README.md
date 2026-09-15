@@ -1,5 +1,5 @@
 # ysay-hotkey
-<b>ysay (2023) - Output (read aloud) selected text with speech synthesis (piper) (in German) as an audio stream using a key combination.</b>
+<b>ysay (2023) - Output (read aloud) selected text with speech synthesis (piper) (in German) as an audio stream using a key combination. Works now (2026) on Wayland as well</b>
 
 *<b>Inspired by:*</b>
 *   the use of xsel from the script xsay by Alex (https://www.youtube.com/watch?v=UjBtKRd7c34)
