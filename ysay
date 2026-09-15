@@ -3,9 +3,17 @@
   # ysay (2023) - Markierten Text mit Sprachsynthese (piper) per Tastenkombination als Audiostream ausgeben.
   # https://github.com/thefoster/ysay-hotkey
   # Dies ist das Ergebnis einer Kombination aus dem Script xsay (von Alex https://www.youtube.com/watch?v=UjBtKRd7c34) und dem Vorgehen zur Sprachausgabe mit piper von Thorsten-Voice (https://www.thorsten-voice.de/kostenloses-deutsches-text-to-speech-tts
+  # Update 2026: Funktionalität auf Wayland erweitert, Bug in $PID behoben
 
   # Auf dem Desktop markierten Text in Variable $text setzen
-  text="$(xsel -o)";
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+      text="$(wl-paste --primary)";
+  elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+      text="$(xsel -o)";
+  else
+      echo "Unbekannter Sitzungstyp: $XDG_SESSION_TYPE" >&2
+      exit 1
+  fi
 
   # Ein paar von xsay übernommene Ersetzungen
   # Doppelpunkt aussprechen
@@ -28,7 +36,7 @@
   text=`echo $text | sed 's,etc, etzetera ,g'`;
 
   # ProzessID der Audiowiedergabe ermitteln und in Datei schreiben (für xsaykill)
-  echo $PID >/tmp/ysay-avplay.PID
+  echo $PID >/tmp/ysay-avplay.pid
 
   # Auswahlbeispiele deutscher Stimmen
 echo "$text" | ~/bin/piper/piper --model ~/bin/piper/de_DE-kerstin-low.onnx --output-raw | aplay -r 16000 -f S16_LE -t raw
